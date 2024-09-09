@@ -10,6 +10,9 @@ let gameOver = false;
 let isAlive = true;
 let message = "";
 let bust = false;
+let currentmoney = 100
+let currentMoneyEl = document.getElementById("current-money-el");
+currentMoneyEl.textContent = "Current Money: $" + currentmoney
 let messageEl = document.getElementById("message-el");
 let sumEl = document.getElementById("sum-el");
 let cardsEl = document.getElementById("cards-el")
@@ -21,11 +24,21 @@ let dealerCardEl = document.getElementById("dealers-cards-el");
 let standButtonEl = document.getElementById("stand-button-el");
 let choose1El = document.getElementById("choose-1-el");
 let choose11El = document.getElementById("choose-11-el");
+let betAmount = document.getElementById("bet-amount-el");
+let bet5DollarButtonEl = document.getElementById("five-dollar-bet-button-el");
+let bet10DollarButtonEl = document.getElementById("ten-dollar-bet-button-el");
+let betHalfCurrentAmountButtonEl = document.getElementById("half-current-money-bet-button-el");
+let betFullCurrentAmountButtonEl = document.getElementById("full-current-money-bet-button-el");
+
+// function trackMoney() {
+//     currentMoneyEl.textContent = "Current Money: $" + currentmoney
+// }
 
 function startGame() {
     startButtonEl.style.display = 'none';
-    hitButtonEl.style.display = "block";
-    standButtonEl.style.display = "block";
+    betAmountButton()
+    // hitButtonEl.style.display = "block";
+    // standButtonEl.style.display = "block";
     cardsEl.textContent = "Cards: " + firstCard + " " + secondCard;
     sumEl.textContent = "Sum: " + sum;
     dealerEl.textContent = "Dealer: " + dealerFirstCard +  " ?";
@@ -118,4 +131,14 @@ function stand(){
         newGameButtonEl.style.display = 'block'
     }
     messageEl.textContent = message
+}
+
+function betAmountButton() {
+    // hitButtonEl.style.display = "none";
+    // standButtonEl.style.display = "none";
+    bet5DollarButtonEl.style.display = "block";
+    bet10DollarButtonEl.style.display = "block";
+    betHalfCurrentAmountButtonEl.style.display = "block";
+    betFullCurrentAmountButtonEl.style.display = "block";
+    
 }
