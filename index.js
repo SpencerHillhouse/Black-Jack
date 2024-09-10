@@ -10,9 +10,9 @@ let gameOver = false;
 let isAlive = true;
 let message = "";
 let bust = false;
-let currentmoney = 100
+let currentMoney = 100
 let currentMoneyEl = document.getElementById("current-money-el");
-currentMoneyEl.textContent = "Current Money: $" + currentmoney
+currentMoneyEl.textContent = "Current Money: $" + currentMoney
 let messageEl = document.getElementById("message-el");
 let sumEl = document.getElementById("sum-el");
 let cardsEl = document.getElementById("cards-el")
@@ -31,28 +31,28 @@ let betHalfCurrentAmountButtonEl = document.getElementById("half-current-money-b
 let betFullCurrentAmountButtonEl = document.getElementById("full-current-money-bet-button-el");
 
 // function trackMoney() {
-//     currentMoneyEl.textContent = "Current Money: $" + currentmoney
+//     currentMoneyEl.textContent = "Current Money: $" + currentMoney
 // }
 
 function startGame() {
     startButtonEl.style.display = 'none';
-    betAmountButton()
-    // hitButtonEl.style.display = "block";
-    // standButtonEl.style.display = "block";
+    // betAmountButton()
+    hitButtonEl.style.display = "block";
+    standButtonEl.style.display = "block";
     cardsEl.textContent = "Cards: " + firstCard + " " + secondCard;
     sumEl.textContent = "Sum: " + sum;
-    dealerEl.textContent = "Dealer: " + dealerFirstCard +  " ?";
-    dealerCardEl.textContent = "Dealers Cards: " + dealerFirstCard 
+    dealerEl.textContent = "Dealer: " +" ?";
+    dealerCardEl.textContent = "Dealers Cards: " + dealerFirstCard  + " ?";
     if (sum <= 20) {
-        message = "Do you want to draw a new card?"
+        message = "Do you want to draw a new card?";
     } else if (sum === 21) {
-        message = "You've got Blackjack! You Win!"
-        gameOver = true
-        hitButtonEl.style.display = "none"
-        standButtonEl.style.display = "none"
-        newGameButtonEl.style.display = 'block'
+        message = "You've got Blackjack! You Win!";
+        gameOver = true;
+        hitButtonEl.style.display = "none";
+        standButtonEl.style.display = "none";
+        newGameButtonEl.style.display = 'block';
     } else {
-        message = "You're out of the game! You Lose!"
+        message = "You're out of the game! You Lose!";
         isAlive = false
     }
     messageEl.textContent = message
@@ -68,18 +68,18 @@ function newCard() {
         if (sum <= 20) {
             message = "Do you want to draw a new card?"
         } else if (sum === 21) {
-            message = "You've got Blackjack! You Win!"
-            gameOver = true
-            hitButtonEl.style.display = "none"
-            standButtonEl.style.display = "none"
-            newGameButtonEl.style.display = 'block'
+            message = "You've got Blackjack! You Win!";
+            gameOver = true;
+            hitButtonEl.style.display = "none";
+            standButtonEl.style.display = "none";
+            newGameButtonEl.style.display = 'block';
         } else {
             message = "You're out of the game! You Lose!";
-            isAlive = false
-            gameOver = true
-            hitButtonEl.style.display = "none"
-            standButtonEl.style.display = "none"
-            newGameButtonEl.style.display = 'block'
+            isAlive = false;
+            gameOver = true;
+            hitButtonEl.style.display = "none";
+            standButtonEl.style.display = "none";
+            newGameButtonEl.style.display = 'block';
         }
         messageEl.textContent = message
     }
@@ -94,7 +94,7 @@ function newGame(){
     dealerFirstCard = Math.floor(Math.random() * (max - min +1)) +min;
     dealerSecondCard = Math.floor(Math.random() * (max - min +1)) +min;
     sum = firstCard + secondCard;
-    dealerSum = dealerFirstCard + dealerSecondCard
+    dealerSum = dealerFirstCard + dealerSecondCard;
     startGame()
 }
 
@@ -109,36 +109,43 @@ function stand(){
     }
     if (sum <= 21 && sum > dealerSum || dealerSum > 21){
         dealerEl.textContent = "Dealer: " + dealerSum;
-        message = "You Win!"
-        gameOver = true
-        hitButtonEl.style.display = "none"
-        standButtonEl.style.display = "none"
-        newGameButtonEl.style.display = 'block'
+        message = "You Win!";
+        gameOver = true;
+        hitButtonEl.style.display = "none";
+        standButtonEl.style.display = "none";
+        newGameButtonEl.style.display = 'block';
+    }
+    else if (sum <21 && sum == dealerSum){
+        message = "You Tie.";
+        gameOver = true;
+        hitButtonEl.style.display = "none";
+        standButtonEl.style.display = "none";
+        newGameButtonEl.style.display = 'block';
     }
     else if (sum <21 && sum==dealerSum){
-        message = "You Lose!"
-        gameOver = true
-        hitButtonEl.style.display = "none"
-        standButtonEl.style.display = "none"
-        newGameButtonEl.style.display = 'block'
+        message = "You Lose!";
+        gameOver = true;
+        hitButtonEl.style.display = "none";
+        standButtonEl.style.display = "none";
+        newGameButtonEl.style.display = 'block';
     }
     else {
         dealerEl.textContent = "Dealer: " + dealerSum;
-        message = "You Lose!"
-        gameOver = true
-        hitButtonEl.style.display = "none"
-        standButtonEl.style.display = "none"
-        newGameButtonEl.style.display = 'block'
+        message = "You Lose!";
+        gameOver = true;
+        hitButtonEl.style.display = "none";
+        standButtonEl.style.display = "none";
+        newGameButtonEl.style.display = 'block';
     }
     messageEl.textContent = message
 }
 
-function betAmountButton() {
-    // hitButtonEl.style.display = "none";
-    // standButtonEl.style.display = "none";
-    bet5DollarButtonEl.style.display = "block";
-    bet10DollarButtonEl.style.display = "block";
-    betHalfCurrentAmountButtonEl.style.display = "block";
-    betFullCurrentAmountButtonEl.style.display = "block";
+// function betAmountButton() {
+//     // hitButtonEl.style.display = "none";
+//     // standButtonEl.style.display = "none";
+//     bet5DollarButtonEl.style.display = "block";
+//     bet10DollarButtonEl.style.display = "block";
+//     betHalfCurrentAmountButtonEl.style.display = "block";
+//     betFullCurrentAmountButtonEl.style.display = "block";
     
-}
+// }
